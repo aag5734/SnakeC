@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
 
 
 int i, j, height = 20, width = 20;
@@ -22,6 +23,31 @@ void setup() {
             break;
         }
     }
+}
+
+/**
+ * Draws out the field for the game
+*/
+void draw() {
+    clrscr();
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            if (i == 0 || i == width - 1 || j == 0 || j == height - 1) {
+                printf("x");
+            } else {
+                if (i == x && j == x) {
+                    printf("0");
+                } else if (i == foodx && j == foody) {
+                    printf("*");
+                } else {
+                    printf(" ");
+                }
+            }
+        }
+        printf("\n");
+    }
+
+    printf("Score: %d\n", score);
 }
 
 
