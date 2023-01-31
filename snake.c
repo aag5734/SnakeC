@@ -50,4 +50,69 @@ void draw() {
     printf("Score: %d\n", score);
 }
 
+void input() {
+    if (kbhit()) {
+        switch (getch()) {
+            case 'a':
+                flag = 1;
+                break;
+            case 's':
+                flag = 2;
+                break;
+            case 'd':
+                flag = 3;
+                break;
+            case 'w':
+                flag = 4;
+                break;
+            case 'x':
+                lose = 1;
+                break;
+        }
+    }
+}
+
+void logic() {
+    _sleep(0.1);
+    switch (flag) {
+        case 1:
+            x--;
+        case 2:
+            y--;
+        case 3:
+            x++;
+        case 4:
+            y++;
+        default:
+        break;
+    }
+    if (x < 0 || x > height || y < 0 || y > width)
+        lose = 1;
+  
+    if (x == foodx && y == foody) {
+        for (;;) {
+            foodx = rand() % height;
+            foody = rand() % width;
+
+            if ((foodx > 0) && (foody > 0)) {
+                break;
+            }
+        }
+        score += 10;
+    }
+}
+
+void main() {
+    int m, n;
+  
+    setup();
+  
+    while (!lose) {
+        draw();
+        input();
+        logic();
+    }
+}
+
+
 
