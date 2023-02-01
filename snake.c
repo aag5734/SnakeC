@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+#include <unistd.h>
 
 
 int i, j, height = 20, width = 20;
@@ -29,7 +29,7 @@ void setup() {
  * Draws out the field for the game
 */
 void draw() {
-    clrscr();
+    
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             if (i == 0 || i == width - 1 || j == 0 || j == height - 1) {
@@ -73,7 +73,7 @@ void input() {
 }
 
 void logic() {
-    _sleep(0.1);
+    sleep(0.1);
     switch (flag) {
         case 1:
             x--;
